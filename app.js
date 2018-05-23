@@ -31,6 +31,7 @@ app.use(methodOverride ('multipart/form-data'));
 app.set("view engine", "jade");
 
 app.use('/static',express.static(path.join(__dirname, '/node_modules')));
+app.use('/static', express.static(path.join(__dirname, '/publico')));
 
 app.use('/', require('./controladores/index'));
 

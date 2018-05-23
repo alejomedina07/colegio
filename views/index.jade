@@ -1,11 +1,19 @@
 doctype html
-html(lang='en' ng-app)
+html(lang='en' ng-app="colegio")
   head
     meta(charset='UTF-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     meta(http-equiv='X-UA-Compatible', content='ie=edge')
     title Document
     script(src="/static/angular/angular.js")
-  body
-    h1 Hola
-    h2 {{ 1 + 1}}
+    script(src="/static/javascript/principal.js")
+    
+  body(ng-controller='formulario as $fCtr')
+    h1 Hola {{ $fCtr.nombre }}
+    div(ng-repeat="pregunta in $fCtr.preguntas")
+      br
+      label ingrese pregunta
+      input(type="text" ng-model="$fCtr.preguntas[$index].pregunta")
+      a(href="#" ng-click="$fCtr.eliminarPregunta($index)") Eliminar pregunta
+    br
+    a(href="#" ng-click="$fCtr.agregarPregunta()") Agregar pregunta
